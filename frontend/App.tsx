@@ -1,131 +1,60 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const LoginScreen = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFFFFF', padding: 16 }}>
+      <Text style={{ fontSize: 32, fontWeight: 'bold', marginBottom: 8, color: '#000' }}>Sign In</Text>
+      <Text style={{ color: '#6B7280', marginBottom: 24, fontSize: 16 }}>Hi welcome back, you’ve been missed</Text>
+
+      <View style={{ width: '90%', marginBottom: 12 }}>
+        <Text style={{ color: '#4B5563', marginBottom: 4 }}>Email</Text>
+        <TextInput 
+          style={{ borderWidth: 1, borderColor: '#D1D5DB', borderRadius: 8, padding: 12 }} 
+          placeholder="Email" 
+          keyboardType="email-address" 
+        />
+      </View>
+
+      <View style={{ width: '90%', marginBottom: 12 }}>
+        <Text style={{ color: '#4B5563', marginBottom: 4 }}>Password</Text>
+        <TextInput 
+          style={{ borderWidth: 1, borderColor: '#D1D5DB', borderRadius: 8, padding: 12 }} 
+          placeholder="Password" 
+          secureTextEntry 
+        />
+        <TouchableOpacity style={{ alignSelf: 'flex-end', marginTop: 4 }}>
+          <Text style={{ color: '#3B82F6', fontSize: 14 }}>Forgot Password?</Text>
+        </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity style={{ width: '90%', backgroundColor: '#678CC8', borderRadius: 8, padding: 14, marginBottom: 24 }}>
+        <Text style={{ color: '#FFFFFF', textAlign: 'center', fontSize: 16 }}>Sign In</Text>
+      </TouchableOpacity>
+
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 24 }}>
+        <View style={{ flex: 1, height: 1, backgroundColor: '#D1D5DB' }} />
+        <Text style={{ marginHorizontal: 8, color: '#6B7280', fontSize: 14 }}>Or sign in with</Text>
+        <View style={{ flex: 1, height: 1, backgroundColor: '#D1D5DB' }} />
+      </View>
+
+      <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 16, marginBottom: 24 }}>
+        <TouchableOpacity>
+          <Image source={require('./assets/apple.png')} style={{ width: 48, height: 48 }} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={require('./assets/google.png')} style={{ width: 48, height: 48 }} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={require('./assets/facebook.png')} style={{ width: 48, height: 48 }} />
+        </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity style={{ marginTop: 16 }}>
+        <Text style={{ color: '#6B7280', fontSize: 14 }}>Don’t have an account? <Text style={{ color: '#3B82F6', fontSize: 14 }}>Sign up</Text></Text>
+      </TouchableOpacity>
     </View>
   );
-}
+};
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the recommendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
-   */
-  const safePadding = '5%';
-
-  return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header/>
-        </View>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: safePadding,
-            paddingBottom: safePadding,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+export default LoginScreen;
